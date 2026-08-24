@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For V</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#3d2331; --wine:#8f405a; --rose:#d8849d; --cream:#fff9f3; --blush:#f9e7e7; --gold:#c99b62; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:"DM Sans",sans-serif; overflow-x:hidden; }
+    .petal { position:fixed; pointer-events:none; z-index:0; color:var(--rose); opacity:.35; animation:fall linear infinite; }
+    @keyframes fall { from { transform:translateY(-10vh) rotate(0deg); } to { transform:translateY(110vh) rotate(300deg); } }
+    .hero { min-height:100vh; position:relative; display:grid; place-items:center; isolation:isolate; overflow:hidden; background:radial-gradient(circle at 20% 20%,#f7dce1 0,transparent 28%),radial-gradient(circle at 80% 75%,#edd3c0 0,transparent 30%),var(--cream); }
+    .orb { position:absolute; border-radius:50%; filter:blur(2px); opacity:.5; z-index:-1; }
+    .orb.one { width:32rem;height:32rem;background:#ecb9c6;top:-14rem;right:-8rem; }
+    .orb.two { width:20rem;height:20rem;background:#e8cba9;bottom:-10rem;left:-6rem; }
+    .hero-content { text-align:center; padding:2rem; max-width:800px; animation:rise 1.2s ease both; }
+    .eyebrow { letter-spacing:.22em; text-transform:uppercase; font-size:.72rem; color:var(--wine); }
+    h1,h2 { font-family:"Cormorant Garamond",serif; font-weight:600; }
+    h1 { font-size:clamp(4.2rem,12vw,8.5rem); line-height:.76; margin:.7rem 0 1.5rem; letter-spacing:-.06em; }
+    h1 em { display:block; color:var(--wine); font-weight:500; }
+    .lead { max-width:400px; margin:0 auto 2rem; line-height:1.7; font-size:1rem; }
+    .button { background:var(--wine); color:white; border:0; border-radius:999px; padding:1rem 1.6rem; font:500 .9rem "DM Sans"; cursor:pointer; box-shadow:0 12px 25px #8f405a3d; transition:.25s transform,.25s background; }
+    .button:hover { transform:translateY(-3px); background:#753047; }
+    .scroll { position:absolute; bottom:1.7rem; color:var(--wine); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; }
+    .scroll::after { content:""; display:block; width:1px;height:35px;background:var(--wine);margin:.5rem auto 0; }
+    section { position:relative; z-index:1; padding:7rem max(1.5rem,8vw); }
+    .letter { background:var(--blush); display:grid; grid-template-columns:1fr 1.1fr; gap:4rem; align-items:center; }
+    .flourish { min-height:340px; border:1px solid #d69cac; display:grid;place-items:center; position:relative; background:linear-gradient(135deg,#fff5f3,#f5d9dc); }
+    .flourish span { font:italic clamp(7rem,16vw,12rem) "Cormorant Garamond"; color:var(--wine); }
+    .flourish::before,.flourish::after { content:"✦"; position:absolute;color:var(--gold);font-size:1.5rem; }
+    .flourish::before { top:14%;left:14%; }.flourish::after { bottom:14%;right:14%; }
+    h2 { font-size:clamp(2.7rem,5vw,4.4rem); line-height:.9; margin:0 0 1.4rem; }
+    .letter p { line-height:1.85; max-width:520px; }
+    .signature { margin-top:1.4rem; font:italic 2rem "Cormorant Garamond"; color:var(--wine); }
+    .reasons { text-align:center; background:var(--cream); }
+    .reasons > p { max-width:480px;line-height:1.7;margin:0 auto 3rem; }
+    .cards { max-width:1050px; margin:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; text-align:left; }
+    .card { padding:1.8rem; min-height:210px; border:1px solid #efd8d2; background:#fffdfa; transition:transform .25s,box-shadow .25s; }
+    .card:hover { transform:translateY(-7px);box-shadow:0 18px 38px #7a384515; }
+    .number { font:italic 1.4rem "Cormorant Garamond"; color:var(--rose); }.card h3 { font:600 1.9rem "Cormorant Garamond"; margin:.9rem 0 .6rem; }.card p { font-size:.9rem; line-height:1.7; margin:0; }
+    .wish { background:var(--wine); color:#fff8f1; text-align:center; overflow:hidden; }
+    .wish::before { content:""; position:absolute; width:42rem;height:42rem;border:1px solid #fff3; border-radius:50%;top:-29rem;left:50%;transform:translateX(-50%); }
+    .wish h2 { position:relative; max-width:720px;margin:auto; }.wish p { position:relative;max-width:540px;margin:1.5rem auto 2rem;line-height:1.8;color:#ffeef1; }
+    .wish .button { background:#fff8f1;color:var(--wine); }.wish .button:hover { background:#f5dce1; }
+    .secret { display:none; margin:2rem auto 0; max-width:520px; padding:1.5rem; border:1px solid #ffffff55; font:italic 1.6rem "Cormorant Garamond"; line-height:1.35; }
+    .secret.show { display:block; animation:rise .6s ease; }
+    footer { padding:1.5rem;text-align:center;font-size:.75rem;color:#936b70;background:#fff5ef; }
+    @keyframes rise { from { opacity:0;transform:translateY(25px); } to { opacity:1;transform:translateY(0); } }
+    @media (max-width:700px) { .letter { grid-template-columns:1fr;gap:2.2rem; }.flourish { min-height:230px; }.cards { grid-template-columns:1fr; }.card { min-height:auto; } section { padding-block:5rem; } }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="orb one"></div><div class="orb two"></div>
+    <div class="hero-content">
+      <div class="eyebrow">50%-AI || 50%-D</div>
+      <h1>Happy Birthday,<em>Vrinda</em></h1>
+      <p class="lead">Could not give you physical gift so created this one eventually...</p>
+      <a class="button" href="#letter">Aana Par Click Kar</a>
+    </div>
+    <div class="scroll">with love, D</div>
+  </div>
+  <section class="letter" id="letter">
+    <div class="flourish" aria-hidden="true"><span><img src="Vrinda.jpg" height="100%" width="100%"></span></div>
+    <div>
+      <div class="eyebrow">Dear Vrinda</div>
+      <h2>Why am I Excited?!</h2>
+      <p>On your birthday, I want you to know how much warmth you bring into my life. In the ordinary moments and the unforgettable ones, you make everything feel softer, brighter, and more meaningful.</p>
+      <p>I hope this new year gives you reasons to laugh until your cheeks hurt, dreams that find their way to you, and all the love you so naturally give to everyone else.</p>
+      <div class="signature">Forever cheering for you,<br>Darshan</div>
+    </div>
+  </section>
+  <section class="reasons">
+    <div class="eyebrow">A few things I adore</div>
+    <h2>Made of magic, really.</h2>
+    <p>Some things are impossible to put neatly into words. These are a beginning.</p>
+    <div class="cards">
+      <article class="card"><div class="number">01</div><h3>Your smile</h3><p>The kind that changes the atmosphere of an entire room—and makes mine feel like home.</p></article>
+      <article class="card"><div class="number">02</div><h3>Your heart</h3><p>So thoughtful, so bright, and always finding a way to make the people around you feel seen.</p></article>
+      <article class="card"><div class="number">03</div><h3>Simply you</h3><p>Every small quirk, every dream, every version of you. I would choose you in all of them.</p></article>
+    </div>
+  </section>
+  <section class="wish">
+    <div class="eyebrow" style="color:#f6c9d3">One last thing</div>
+    <h2>May this year love you as beautifully as you deserve.</h2>
+    <p>Here’s to more late conversations, little adventures, and a thousand moments that become ours. Happy birthday, Vrinda.</p>
+    <button class="button" id="reveal">A secret for you ✦</button>
+    <div class="secret" id="secret">No matter where life takes us, you will always be one of my most precious places.</div>
+  </section>
+  <footer>Made with all my love for Vrinda · Darshan</footer>
+  <script>
+    for(let i=0;i<18;i++){ const p=document.createElement('span'); p.className='petal';p.textContent='♥';p.style.left=Math.random()*100+'vw';p.style.animationDuration=8+Math.random()*10+'s';p.style.animationDelay=-Math.random()*12+'s';p.style.fontSize=10+Math.random()*15+'px';document.body.appendChild(p); }
+    document.getElementById('reveal').addEventListener('click', function(){ document.getElementById('secret').classList.add('show'); this.textContent='I mean every word ♥'; });
+  </script>
+</body>
+</html>
